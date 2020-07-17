@@ -1,0 +1,95 @@
+create database Exercise1;
+use Exercise1;
+create table SEMP
+(
+EMPNO  CHAR(4),
+EMPNAME  CHAR(20),
+BASIC  FLOAT(9,2),
+DEPTNO  CHAR(2),
+DEPTHEAD  CHAR(4)
+);
+
+insert into SEMP(empno,empname,basic,deptno) values('0001','SUNIL',6000,'10');
+insert into SEMP(empno,empname,basic,deptno) values('0002','HIREN',8000,'20');
+insert into SEMP(empno,empname,basic,deptno,depthead) values('0003', 'ALI', 4000, '10', '0001');
+insert into SEMP(empno,empname,basic,depthead) values('0004','GEORGE',6000,'0002');
+create table SDEPT
+(
+DEPTNO CHAR(2),
+DEPTNAME CHAR(15)
+);
+
+insert into SDEPT(deptno,deptname) values('10','Development');
+insert into SDEPT(deptno,deptname) values('20','Training');
+
+create table S
+(
+`S#` char(4),
+Sname varchar(20),
+Status varchar(20),
+City  varchar(20)
+);
+
+insert into S(`s#`,sname,status,city) values('S1','James','10','London');
+insert into S(`s#`,sname,status,city) values('S2','John','20','Paris');
+insert into S(`s#`,sname,status,city) values('S3','David','30','Athens');
+insert into S(`s#`,sname,status,city) values('S4','Emma','40','Landon');
+
+create table P
+(
+`P#` char(4),
+Pname varchar(20),
+Colour char(10),
+Weight int(10),
+City varchar(10)
+);
+
+insert into P(`p#`,pname,colour,weight,city) values('P1','Fuel Filter','Silver',1500,'athens');
+insert into P(`p#`,pname,colour,weight,city) values('P2','Disc Brake','Gray',1500,'Paris');
+insert into P(`p#`,pname,colour,weight,city) values('P3','Gear Box','Gray',90000,'Barlin');
+
+create table J
+(
+`J#` char(10),
+Jname varchar(20),
+City varchar(10)
+);
+
+insert into J(`J#`,jname,city) values('J1','Fuel System','London');
+insert into J(`J#`,jname,city) values('J2','Brake System','Berlin');
+insert into J(`J#`,jname,city) values('J3','Gear System','London');
+
+5. Display all the data from the S table.
+==> select * from S;
+
+6. Display only the S# and SNAME fields from the S table.
+==> select `S#`,Sname from S;
+
+7. Display the PNAME and COLOR from the P table for the CITY=”London”.
+==> select pname ,colour from P where city='London';
+
+8. Display all the Suppliers from London.
+==>select * from S where city='London';
+
+9. Display all the Suppliers from Paris or Athens.
+==>select * from S where city='paris' || city='Athens';
+
+10. Display all the Projects in Athens.
+==>select * from P where city='Athens';
+
+11. Display all the Partnames with the weight between 1200 and 1400 (inclusive of both).
+==> select * from P where Weight BETWEEN 1200 AND  1400;
+
+12. Display all the Suppliers with a Status greater than or equal to 20.
+==> select * from S where Status>=20;
+
+13. Display all the Suppliers except the Suppliers from London.
+==> select * from S where city != 'London';
+
+14. Display only the Cities from where the Suppliers come from.
+==> select city from S;
+
+15. Assuming that the Part Weight is in GRAMS, display the same in
+MILLIGRAMS and KILOGRAMS.
+==>select Weight as Weight_IN_GRAMS, Weight/1000 as Weight_IN_KILOGRAMS, Weight*1000 as Weight_IN_MILLIGRAMS from P;
+
