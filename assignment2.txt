@@ -1,0 +1,12 @@
+1) Which field of the Customers table is the primary key?
+==> Primary key is nothing but Unique identification numbers so that for customer table Cnum become primary key.
+
+2) What is the 4 th column of the Customers table?
+==>Rating
+3) What is another word for row? For column?
+==>rom =>tuples,entity
+   column =>method,Attribute
+4) Why isn’t it possible to see the first five rows of a table?
+==> because rows are not stored sequentially.
+    they are scattered (fragmented) in database server.
+    they are fetched on the basis of their address stored in a server.
