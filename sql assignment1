@@ -1,0 +1,64 @@
+mysqldupm -uroot -proot assignment1 > Day1.txt; //for store the data
+create database assignment1;
+show databases;
+use assignment1;
+create table SALESPEOPLE
+(
+Snum int(4),
+Sname varchar(10),
+City varchar(10),
+Comm float(3,2)
+);
+
+show tables;
+
+insert into SALESPEOPLE(Snum,Sname,City,Comm) values(1001,'Peel','London',.12);
+insert into SALESPEOPLE(Snum,City,comm,sname)values(1002,'San Jose',0.13,'Serres');
+insert into SALESPEOPLE(Sname,Snum,city,comm)values('Motika',1004,'London',.11);
+insert into SALESPEOPLE(Sname,city,comm,snum)values('Rifkin','Barcelona',0.15,1007);
+insert into SALESPEOPLE(city,sname,comm,snum)values('New York','Axelrod',0.10,1003);
+update SALESPEOPLE set comm=0.11 where Snum=1004;
+
+create table CUSTOMERS
+(
+Cnum int(4),
+Cname varchar(10),
+City varchar(10),
+Rating int(4),
+Snum int(4)
+);
+
+insert into CUSTOMERS values(2001,'Hoffman','London',100,1001);
+insert into CUSTOMERS(cnum,cname,city,rating,snum) values(2002,'Giovanni','Rome',200,1003);
+insert into CUSTOMERS(cname,cnum,city,rating,snum) values('Liu',
+2003,'San Jose',200,1002);
+insert into CUSTOMRES(cname,cnum,city,rating,snum) values('Grass',2004,'Berlin',300,1002);
+insert into CUSTOMERS(cname,cnum,city,rating,snum) values('Clemens',2006,
+'London',100,1001);
+insert into CUSTOMERS(cname,cnum,city,ratingm,snum) values('Cisneros',2008,'San Jose',300,1007);
+insert into CUSTOMERS(cname,cnum,city,rating,snum) values('Pereira',2007,'Rome',100,1004);
+delete from CUSTOMERS where cnum=2007;
+
+create table ORDERS
+(
+Onum int(4),
+Amt float(7,2),
+Odate date,
+Cnum int(4),
+Snum int(4)
+);
+
+desc OERDERS;
+insert into ORDERS(Onum,amt,odate,cnum,snum) values(3001,18.69,'1990-10-03',2008,1007);
+insert into ORDERS(Onum,amt,odate,cnum,snum) values(3003,767.19,'1990-10-03',2001,1001);
+insert into ORDERS(Onum,amt,odate,cnum,snum) values(3002,1900.10,'1990-10-03',2007,1004);
+insert into ORDERS(Onum,amt,odate,cnum,snum) values(3005,5160.45,'1990-10-03',2003,1002);
+insert into ORDERS(Onum,amt,odate,cnum,snum) values(3006,1098.16,'1990-10-03',2008,1007);
+insert into ORDERS(Onum,amt,odate,cnum,snum) values(3009,1713.23,'1990-10-04',2002,1003);
+insert into ORDERS(Onum,amt,odate,cnum,snum) values(3007,75.75,'1990-10-04',2004,1002);
+insert into ORDERS(Onum,amt,odate,cnum,snum) values(3008,4723.00,'1990-10-05',2006,1001);
+insert into ORDERS(Onum,amt,odate,cnum,snum) values(3010,1309.95,'1990-10-06',2004,1002);
+insert into ORDERS(Onum,amt,odate,cnum,snum) values(3011,9891.88,'1990-10-06',2006,1001);
+
+
+
