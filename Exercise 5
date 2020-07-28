@@ -1,0 +1,122 @@
+SQL Exercise 5
+1. Display the Supplier name and the Quantity sold.
+==>
+mysql> select  sname, sum(qty) from S, SPJ where S.`s#` = SPJ.`s#` group by sname;
++--------+----------+
+| sname  | sum(qty) |
++--------+----------+
+| James  |      100 |
+| John   |      200 |
+| David  |       90 |
+| Emma   |       80 |
+| Gaurav |       50 |
++--------+----------+
+
+
+2. Display the Part name and Quantity sold.
+==>
+mysql> select pname,sum(qty) 'qty sold' from P,SPJ where P.`p#`=SPJ.`p#` group by pname;
++-------------+----------+
+| pname       | qty sold |
++-------------+----------+
+| Fuel Filter |      190 |
+| Disc Brake  |      200 |
+| Gear Box    |      130 |
++-------------+----------+
+3. Display the Project name and Quantity sold.
+==>
+mysql> select Jname,sum(qty) 'qty sold' from J,SPJ where J.`j#`=SPJ.`j#` group by jname;
++--------------+----------+
+| Jname        | qty sold |
++--------------+----------+
+| Fuel System  |      190 |
+| Brake System |      250 |
+| Gear System  |       80 |
++--------------+----------+
+
+4. Display the Supplier name, Part name, Project name and Quantity sold.
+==>
+mysql> select sname,pname,jname,qty from S,P,J,SPJ where SPJ.`j#`=J.`j#` and SPJ.`p#`=P.`p#` and SPJ.`s#`=S.`s#`;
++--------+-------------+--------------+------+
+| sname  | pname       | jname        | qty  |
++--------+-------------+--------------+------+
+| James  | Fuel Filter | Fuel System  |  100 |
+| John   | Disc Brake  | Brake System |  200 |
+| David  | Fuel Filter | Fuel System  |   90 |
+| Emma   | Gear Box    | Gear System  |   80 |
+| Gaurav | Gear Box    | Brake System |   50 |
++--------+-------------+--------------+------+
+
+5. Display the Supplier name, Supplying Parts to a Project in the same City.
+==>
+
+
+6. Display the Part name that is ‘Silver’ is color, and the Quantity sold.
+==>
+mysql> select pname,sum(qty) from P,SPJ where SPJ.`p#`=P.`p#` and colour='silver' group by pname;
++-------------+----------+
+| pname       | sum(qty) |
++-------------+----------+
+| Fuel Filter |      190 |
++-------------+----------+
+
+7. Display all the Quantity sold by Suppliers with the Status = 20.
+==>
+mysql> select qty from SPJ where `s#` in (select `s#` from S where status=20);
++------+
+| qty  |
++------+
+|  200 |
++------+
+
+8. Display all the Parts and Quantity with a Weight > 1400.
+==>
+mysql> select pname,sum(qty) from P,SPJ where SPJ.`p#`=P.`p#` and weight>1400 group by pname;
++-------------+----------+
+| pname       | sum(qty) |
++-------------+----------+
+| Fuel Filter |      190 |
+| Gear Box    |      130 |
++-------------+----------+
+
+9. Display all the Project names and City, which has bought more than 100 Parts.
+==>
+mysql> select pname ,city from P where `p#` in (select `p#` from SPJ where qty>100);
++------------+-------+
+| pname      | city  |
++------------+-------+
+| Disc Brake | Paris |
++------------+-------+
+
+10. Display all the Part names and Quantity sold that have a Weight less than 1500.
+==>
+mysql> select pname,qty from P,SPJ where SPJ.`p#`=P.`p#` and weight<1500;
++------------+------+
+| pname      | qty  |
++------------+------+
+| Disc Brake |  200 |
++------------+------+
+
+11.Display the number of emp work under the each manager .
+==>
+mysql> select count(e1.ename) as emp,e2.ename as mgr from emp e1,emp e2 where e1.mgr=e2.empno group by e2.ename;
++-----+------+
+| emp | mgr  |
++-----+------+
+|   2 | Arun |
+|   2 | Jack |
++-----+------+
+
+
+11. Display all the Employee names and the name of their Managers.
+==>
+mysql> select e1.ename as emp,e2.ename as mgr from emp e1,emp e2 where e1.mgr=e2.empno;
++--------+------+
+| emp    | mgr  |
++--------+------+
+| Kirun  | Arun |
+| Ali    | Arun |
+| Thomas | Jack |
+| Arun   | Jack |
++--------+------+
+
